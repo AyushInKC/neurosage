@@ -1,0 +1,7 @@
+import { NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
+import { registerSchema } from "@/lib/validation/auth";
+import { connectDb } from "@/lib/db/mongoose";
+import User from "@/models/User";
+import { createToken } from "@/lib/auth/tokens";
+export async function POST(request: Request) { try { const body = request.headers.get("content-type")?.includes("application/json") ? await request.json() : Object.fromEntries((await request.formData()).entries()); const input = registerSchema.parse({ ...body, consent: body.consent === true || body.consent === "on" }); await connectDb(); if (await User.exists({ email: input.email })) return NextResponse.json({ success: false, message: "Unable to create account with those details." }, { status: 409 }); const user = await User.create({ name: input.name, email: input.email, passwordHash: await bcrypt.hash(input.password, 12), consentNonEssential: input.consentNonEssential }); const access = await createToken(user.id, "user", user.email); const response = NextResponse.json({ success: true, user: { id: user.id, name: user.name, email: user.email, role: user.role } }, { status: 201 }); response.cookies.set("neurosage_access", access, { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", path: "/", maxAge: 900 }); return response; } catch (error) { return NextResponse.json({ success: false, message: error instanceof Error && error.name === "ZodError" ? "Please check the form fields." : "Registration could not be completed." }, { status: 400 }); } }

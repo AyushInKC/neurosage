@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function MyRegistrations() { return <main className="mx-auto max-w-4xl px-5 py-12"><Link href="/dashboard" className="text-terracotta">← Dashboard</Link><h1 className="mt-12 text-5xl">My registrations</h1><div className="mt-10 rounded-2xl border border-border bg-surfaceMuted p-8 text-secondary">Your Brainwell Camp registrations will appear here.</div></main>; }

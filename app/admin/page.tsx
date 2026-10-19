@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function Admin() { return <main className="mx-auto max-w-6xl px-5 py-12"><Link href="/dashboard" className="text-terracotta">← Dashboard</Link><h1 className="mt-12 text-5xl">Admin portal</h1><div className="mt-10 grid gap-4 md:grid-cols-4">{["Total submissions", "Confirmed seats", "Pending review", "Waitlisted"].map(label => <div key={label} className="rounded-2xl bg-cream p-6"><p className="text-sm text-secondary">{label}</p><p className="mt-5 text-4xl">—</p></div>)}</div></main>; }

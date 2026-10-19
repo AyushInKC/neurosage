@@ -1,0 +1,3 @@
+import mongoose, { Schema } from "mongoose";
+const campSchema = new Schema({ campCode: { type: String, unique: true, default: "BRAINWELL_2026" }, title: { type: String, default: "Brainwell Camp" }, tagline: { type: String, default: "Revive your mind." }, fee: { type: Number, default: 49 }, capacity: { type: Number, default: 50 }, waitlistEnabled: { type: Boolean, default: true }, isOpen: { type: Boolean, default: true }, venue: { type: String, default: "Details to be announced" }, dates: { type: String, default: "Details to be announced" }, description: String }, { timestamps: true });
+export default mongoose.models.Camp || mongoose.model("Camp", campSchema);

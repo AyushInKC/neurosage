@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function Pharmacy() { return <main className="mx-auto max-w-3xl px-5 py-12"><Link href="/dashboard" className="text-terracotta">← Dashboard</Link><h1 className="mt-12 text-5xl">Wellness Pharmacy</h1><div className="mt-8 rounded-3xl bg-cream p-8"><p className="text-terracotta">Coming soon</p><p className="mt-4 leading-8 text-secondary">Thoughtful resources and wellness products, curated with care.</p></div></main>; }

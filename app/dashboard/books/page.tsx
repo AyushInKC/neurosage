@@ -1,0 +1,3 @@
+import Link from "next/link";
+const books = ["Unmasking Autism — Devon Price, PhD", "ADHD 2.0 — Edward Hallowell & John Ratey", "How to ADHD — Jessica McCabe", "NeuroTribes — Steve Silberman", "Driven to Distraction — Edward Hallowell & John Ratey", "Laziness Does Not Exist — Devon Price, PhD", "Order from Chaos — Jaclyn Paul", "Thinking in Pictures — Temple Grandin"];
+export default function Books() { return <main className="mx-auto max-w-5xl px-5 py-12"><Link href="/dashboard" className="text-terracotta">← Dashboard</Link><h1 className="mt-12 text-5xl">Books for the mind</h1><div className="mt-10 grid gap-4 md:grid-cols-2">{books.map(book => <div key={book} className="rounded-2xl border border-border bg-cream p-6">{book}</div>)}</div></main>; }

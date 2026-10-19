@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound() { return <main className="grid min-h-screen place-items-center bg-ivory px-5 text-center"><div><p className="text-terracotta">404</p><h1 className="mt-3 text-5xl">This page wandered off.</h1><p className="mt-4 text-secondary">Let’s take you somewhere gentler.</p><Link href="/" className="mt-8 inline-block rounded-full bg-terracotta px-6 py-3 text-ivory">Back to NeuroSage</Link></div></main>; }
